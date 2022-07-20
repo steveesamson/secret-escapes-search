@@ -9,7 +9,7 @@ const App = (): JSX.Element => (
         <Route path='/' element={<Landing />} />
         <Route element={<Layout />}>
             <Route path='/search' element={<Search />} />
-            <Route path='/sales/:saleId' element={<Sale />} />
+            <Route path='/sale/:saleId' element={<Sale />} />
         </Route>
 
     </Routes>

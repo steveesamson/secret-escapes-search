@@ -1,6 +1,8 @@
 import React, { FC, useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { NavBar } from './Layout';
+import Logo from './Logo';
 
 const Landing: FC = (): JSX.Element => {
     const navigate = useNavigate();
@@ -12,13 +14,16 @@ const Landing: FC = (): JSX.Element => {
     }, [navigate, term])
 
     return (<PageWrapper>
+        <NavBar>
+            <Logo />
+        </NavBar>
         <Page>
             <SearchInput
                 type='text'
                 placeholder='Enter a location to search.'
                 onChange={(e) => setTerm((e.target as HTMLInputElement).value)}
             />
-            <SearchButton type='button' onClick={onSearch}>Search</SearchButton>
+            <SearchButton type='button' onClick={onSearch}>Search places</SearchButton>
         </Page>
     </PageWrapper>)
 
@@ -30,13 +35,13 @@ const PageWrapper = styled.section`
     width:100vw;
     height:100vh;
     display:flex;
-    justify-content:center;
+    flex-direction:column;
     align-items:center;
 `;
 
 const Page = styled.div`
-    margin-top:-120px;
-    width:500px;
+    margin-top:120px;
+    width:600px;
     display:flex;
     justifyContent:flex-start;
     align-items:center;
@@ -49,7 +54,7 @@ const SearchInput = styled.input`
     flex:1;
     border:none;
     outline:none;
-    font-size:16px;
+    font-size:24px;
     padding:8px 16px;
 `;
 
@@ -59,7 +64,7 @@ const SearchButton = styled.button`
     border:1px soid var(--slate-700);
     color: var(--slate-100);
     cursor:pointer;
-    font-size:16px;
+    font-size:24px;
     font-weight:500;
     padding:8px 24px;
     transition:all 0.37s ease-in-out;
@@ -68,4 +73,5 @@ const SearchButton = styled.button`
         background-color: var(--slate-500);
     }
 `;
+
 
