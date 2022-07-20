@@ -1,98 +1,107 @@
+import React, { FC } from "react";
 import styled from "styled-components";
-import { Title, Text, Image, Link } from "../common";
+import { FullSale } from "../../types";
+import { Title, Text, Link } from "../common";
+import Carousel from './Carousel';
 
+interface SearchDetailProps {
+    sale: FullSale;
+}
+const SearchDetail: FC<SearchDetailProps> = ({
+    sale: {
+        editorial: { title, destinationName, hotelDetails },
+        photos,
+        prices: {
+            leadRate: { forDisplay },
+        },
+    },
+}): JSX.Element => {
 
-const SearchDetail = () => (<Detail>
-    <Hero>
-        <ImageSpace>
-            <StyledImage src='https://secretescapes-web.imgix.net/hotels/1628/d67e35ed_ef62_40e1_b6fa_bac50888bdc8.jpg?auto=format,compress' alt='ss' />
-        </ImageSpace>
-        <ContentSpace>
-            <StyledTitle>Contemporary London pad by St Paul's Cathedral - Refundable hotel</StyledTitle>
-            <StyledText>Leonardo Royal London Hotel St Paul's, Central London</StyledText>
-            <PriceTag>
-                From <strong>$23.09</strong>
-            </PriceTag>
-            <StyledLink>
-                Book Now
-            </StyledLink>
-        </ContentSpace>
-    </Hero>
-    <DetailContent dangerouslySetInnerHTML={{ __html: '<p>Hello there</p>' }} ></DetailContent>
+    return (
+        <Detail>
+            <Hero>
+                <Carousel photos={photos} title={title} />
+                <ContentSpace>
+                    <StyledTitle>{title}</StyledTitle>
+                    <StyledText>{destinationName}</StyledText>
+                    <PriceTag>
+                        From <strong>{forDisplay}</strong>
+                    </PriceTag>
+                    <StyledLink title="Book now">Book Now</StyledLink>
+                </ContentSpace>
+            </Hero>
+            <DetailContent
+                dangerouslySetInnerHTML={{ __html: hotelDetails }}
+            ></DetailContent>
+        </Detail>
+    );
+};
 
-
-</Detail>);
-
-export default SearchDetail
-
+export default SearchDetail;
 
 const Detail = styled.section`
   outline: none;
   color: var(--slate-800);
   font-size: 16px;
   font-weight: 400;
-  padding:0;
-  margin:0;
+  padding: 0;
+  margin: 0;
   transition: all 0.37s ease-in-out;
   background-color: var(--white);
-  border:1px solid var(--slate-300);
+  border: 1px solid var(--slate-300);
 `;
 
-
-const ImageSpace = styled.div`
-    flex:1;
-    padding:0;
-`;
 const ContentSpace = styled.div`
-    width:250px;
-    background-color: var(--slate-900);
-    padding:16px;
+  width: 250px;
+  background-color: var(--slate-900);
+  padding: 16px;
 `;
 const StyledLink = styled(Link)`
+  background-color: var(--tomato);
+  border-color: var(--tomato);
+  color: var(--white);
+  justify-content: center;
+  margin-top: 16px;
+  border-radius: 0 30px 30px 0;
+  font-weight: 800;
+  text-transform: uppercase;
+  &:hover {
     background-color: var(--tomato);
     border-color: var(--tomato);
-    color: var(--white);
-    justify-content:center;
-    margin-top:16px;
-    border-radius:0 30px 30px 0;
-    font-weight:800;
-    text-transform:uppercase;
-    &:hover{
-        background-color: var(--tomato);
-        border-color: var(--tomato);
-        color: var(--slate-50);
-    }
+    color: var(--slate-50);
+  }
 `;
 const StyledText = styled(Text)`
-    color: var(--slate-200);
+  color: var(--slate-200);
 `;
 
 const StyledTitle = styled(Title)`
-    font-weight:600;
-    color: var(--slate-400);
+  font-weight: 600;
+  color: var(--slate-400);
 `;
 
-const StyledImage = styled(Image)`
-    width:100%;
-`;
+
 
 const Hero = styled.div`
-    display:flex;
-    flex-direction:row;
+  display: flex;
+  flex-direction: row;
 `;
 
 const PriceTag = styled.div`
-    color: var(--slate-300);
-    text-align:left;
-    padding:16px 0;
-    & strong{
-        color: var(--tomato);
-        font-size:24px;
-        font-weight:800;
-    }
-
+  color: var(--slate-300);
+  text-align: left;
+  padding: 16px 0;
+  & strong {
+    color: var(--tomato);
+    font-size: 24px;
+    font-weight: 800;
+  }
 `;
 const DetailContent = styled.div`
-    padding:16px;
-    text-align:left;
+  padding: 16px 32px;
+  text-align: left;
+   & > ul,
+   & > div {
+    font-size:14px;
+   }
 `;

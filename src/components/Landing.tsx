@@ -11,7 +11,17 @@ const Landing: FC = (): JSX.Element => {
     const onSearch = useCallback(() => {
         if (!term) return;
         navigate(`/search?query=${encodeURIComponent(term)}`);
-    }, [navigate, term])
+    }, [navigate, term]);
+
+    const onKeyup = useCallback(
+        (e: React.KeyboardEvent<HTMLInputElement>) => {
+            const { code } = e;
+            if (code === 'Enter') {
+                onSearch();
+            }
+        },
+        [onSearch]
+    );
 
     return (<PageWrapper>
         <NavBar>
@@ -21,6 +31,7 @@ const Landing: FC = (): JSX.Element => {
             <SearchInput
                 type='text'
                 placeholder='Enter a location to search.'
+                onKeyUp={onKeyup}
                 onChange={(e) => setTerm((e.target as HTMLInputElement).value)}
             />
             <SearchButton type='button' onClick={onSearch}>Search places</SearchButton>

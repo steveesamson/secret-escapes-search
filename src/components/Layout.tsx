@@ -1,16 +1,20 @@
 import React, { FC } from "react";
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
+import { useGoBack } from "../hooks";
 import Logo from "./Logo";
 
 const Layout: FC = (): JSX.Element => {
+
+  const goBack = useGoBack();
+
   return (
     <PageWrapper>
       <NavBar>
         <Logo />
         <Menus>
           <Menu href="/">Home</Menu>
-          <Menu>Search</Menu>
+          <Menu href="#" onClick={goBack}>Search</Menu>
         </Menus>
       </NavBar>
       <ContentWrapper>

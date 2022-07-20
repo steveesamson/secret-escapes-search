@@ -1,4 +1,4 @@
-type Photo = {
+export type Photo = {
   url: string;
 };
 type Prices = {
@@ -12,12 +12,14 @@ type Editorial = {
   hotelDetails: string;
 };
 
-export type Sale = {
+export interface Sale {
   id: string;
   editorial: Editorial;
   photos: Photo[];
-  prices?: Prices;
-};
+}
+export interface FullSale extends Sale {
+  prices: Prices;
+}
 
 export type SearchResult = {
   resultCount: number;
