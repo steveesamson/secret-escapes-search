@@ -1,0 +1,11 @@
+version: "3"
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - "3000:3000"
+    container_name: secret-escapes-search
+    volumes:
+      - ./app:/usr/src/app
+      - /usr/src/app/node_modules
