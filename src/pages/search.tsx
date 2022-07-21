@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { usePager, useQueryStringChages, useSearch } from "../hooks";
 import { PageError, PageLoader } from "../components/common";
-import SearchList from "../components/search/SearchResult";
-import SearchFooter from "../components/search/Footer";
+import { SearchList, SearchFooter } from "../components/search";
 import { SearchResult } from "../types";
 
 const SearchResultList = (): JSX.Element => {

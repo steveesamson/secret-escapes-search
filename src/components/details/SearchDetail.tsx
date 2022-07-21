@@ -5,36 +5,36 @@ import { Title, Text, Link } from "../common";
 import Carousel from './Carousel';
 
 interface SearchDetailProps {
-    sale: FullSale;
+  sale: FullSale;
 }
 const SearchDetail: FC<SearchDetailProps> = ({
-    sale: {
-        editorial: { title, destinationName, hotelDetails },
-        photos,
-        prices: {
-            leadRate: { forDisplay },
-        },
+  sale: {
+    editorial: { title, destinationName, hotelDetails },
+    photos,
+    prices: {
+      leadRate: { forDisplay },
     },
+  },
 }): JSX.Element => {
 
-    return (
-        <Detail>
-            <Hero>
-                <Carousel photos={photos} title={title} />
-                <ContentSpace>
-                    <StyledTitle>{title}</StyledTitle>
-                    <StyledText>{destinationName}</StyledText>
-                    <PriceTag>
-                        From <strong>{forDisplay}</strong>
-                    </PriceTag>
-                    <StyledLink title="Book now">Book Now</StyledLink>
-                </ContentSpace>
-            </Hero>
-            <DetailContent
-                dangerouslySetInnerHTML={{ __html: hotelDetails }}
-            ></DetailContent>
-        </Detail>
-    );
+  return (
+    <Detail>
+      <Hero>
+        <Carousel photos={photos} title={title} />
+        <ContentSpace>
+          <StyledTitle>{title}</StyledTitle>
+          <StyledText>{destinationName}</StyledText>
+          <PriceTag>
+            From <strong>{forDisplay}</strong>
+          </PriceTag>
+          <StyledLink title="Book now">Book Now</StyledLink>
+        </ContentSpace>
+      </Hero>
+      <DetailContent
+        dangerouslySetInnerHTML={{ __html: hotelDetails }}
+      ></DetailContent>
+    </Detail>
+  );
 };
 
 export default SearchDetail;
@@ -52,9 +52,13 @@ const Detail = styled.section`
 `;
 
 const ContentSpace = styled.div`
-  width: 250px;
+  width:100%;
   background-color: var(--slate-900);
   padding: 16px;
+
+   @media screen and (min-width: 600px) {
+    width: 250px;
+  }
 `;
 const StyledLink = styled(Link)`
   background-color: var(--tomato);
@@ -83,8 +87,11 @@ const StyledTitle = styled(Title)`
 
 
 const Hero = styled.div`
-  display: flex;
-  flex-direction: row;
+   @media screen and (min-width: 600px) {
+    display:flex;
+    flex-direction:row;
+  }
+   
 `;
 
 const PriceTag = styled.div`

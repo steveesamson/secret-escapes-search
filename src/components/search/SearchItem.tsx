@@ -29,9 +29,7 @@ export default SearchItem
 
 
 const Item = styled.li`
-  display:flex;
-  flex-direction:row;
-  align-items:flex-start;
+
   outline: none;
   color: var(--slate-800);
   font-size: 16px;
@@ -42,9 +40,22 @@ const Item = styled.li`
   background-color: var(--white);
   border:1px solid var(--slate-300);
 
+  & img{
+    width:100%;
+  }
+
   &:hover{
     box-shadow: var(--shadow);
     background-color: var(--slate-50);
+  }
+
+  @media screen and (min-width: 600px) {
+    display:flex;
+    flex-direction:row;
+    align-items:flex-start;
+    & img{
+       width:250px;
+    }
   }
 `;
 

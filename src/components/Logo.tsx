@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Logo = (): JSX.Element => (<LogoLink href="/">
-  <img src='https://d1x3cbuht6sy0f.cloudfront.net/assets/images/logos/se-logo-uk.png' alt='logo' />
+  <img src='https://d1x3cbuht6sy0f.cloudfront.net/assets/images/logos/se-logo-uk.png' alt='logo' loading='lazy' />
 </LogoLink>);
 
 export default Logo;
@@ -20,6 +20,6 @@ export const LogoLink = styled.a`
   border-radius:8px;
   text-decoration:none;
   & img{
-    width:220px;
+    width:180px;
   }
 `;

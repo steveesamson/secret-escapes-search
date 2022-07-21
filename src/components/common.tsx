@@ -42,15 +42,15 @@ export const PageError: FC<PageErrorProps> = ({ message }): JSX.Element => {
 
     return (
         <ErrorWrapper>
-            <Icon size={36}>
+            <Icon size={56}>
                 <path d="M16.971 0h-9.942l-7.029 7.029v9.941l7.029 7.03h9.941l7.03-7.029v-9.942l-7.029-7.029zm-1.402 16.945l-3.554-3.521-3.518 3.568-1.418-1.418 3.507-3.566-3.586-3.472 1.418-1.417 3.581 3.458 3.539-3.583 1.431 1.431-3.535 3.568 3.566 3.522-1.431 1.43z" />
             </Icon>
             <LoaderText>
                 {message}
-                <BackButton type="button" onClick={goBack}>
-                    Go back
-                </BackButton>
             </LoaderText>
+            <BackButton type="button" onClick={goBack}>
+                Go back
+            </BackButton>
         </ErrorWrapper>
     );
 };
@@ -143,13 +143,13 @@ export const Link = styled.a`
 `;
 const BackButton = styled.a`
     color: var(--slate-900);
-    padding:3px;
     cursor: pointer;
     font-weight:400;
-    font-size:14px;
+    font-size:16px;
+    padding:8px 16px;
+    margin-top:16px;
     background-color: var(--slate-300);
-    border-radius:5px;
-    margin-left:3px;
+    border-radius:8px;
     &:hover{
         background-color: var(--slate-100);
     }
@@ -175,22 +175,27 @@ export const Button = styled.button`
     }
 `;
 
-export const ErrorWrapper = styled.section`
+const ErrorWrapper = styled.section`
   display: flex;
   align-items: center;
+  flex-direction:column;
   background-color: var(--white);
   border-radius: 8px;
-  border: 1px solid var(--slate-500);
+  border: 1px solid var(--slate-300);
   color: var(--tomato);
   font-size: 18px;
-  max-width: 500px;
-  min-width: 320px;
-  padding: 16px;
+  width:90%;
+  padding: 16px 32px;
   margin: 64px auto 0;
+
+  @media screen and (min-width: 700px) {
+        width:500px;
+    }
 `;
 
-export const NetworkIndicator = styled.section`
+const NetworkIndicator = styled.section`
   display: flex;
+  flex-direction:column;
   align-items: center;
   justify-content: center;
   background-color: var(--white);
@@ -198,13 +203,26 @@ export const NetworkIndicator = styled.section`
   border: 1px solid var(--slate-100);
   color: var(--slate-700);
   font-size: 18px;
-  max-width: 500px;
-  min-width: 320px;
+  width: 90%;
   padding: 16px;
   margin: 64px auto 0;
+
+  @media screen and (min-width: 500px) {
+        width:400px;
+    }
 `;
 const LoaderText = styled(Text)`
-  font-size: 18px;
-  margin-left: 8px;
+  font-size: 16px;
   font-weight: 800;
+  margin-top:16px;
+`;
+
+export const PageWrapper = styled.section`
+    width:100vw;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    overflow:hidden;
 `;

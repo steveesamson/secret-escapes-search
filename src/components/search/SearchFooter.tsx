@@ -11,14 +11,11 @@ interface SearchFooterProps {
 
 const SearchFooter: FC<SearchFooterProps> = ({ resultCount, page, onPrev, onNext }) => {
     const max = useMemo(() => Math.ceil(resultCount / 10), [resultCount]);
-
     return (<Footer>
         <Text>
-            Page {page + 1} of {max} pages | Total:{" "}
-            {resultCount}
+            Page {page + 1} of {max} pages | Total:{" "} {resultCount}
         </Text>
         <PagerWrapper>
-
             {!!page && <Pager type="button" className='previousButton' onClick={onPrev}>
                 <ChevronLeft size={14} />
                 <span>Prev</span>
@@ -47,7 +44,7 @@ const Footer = styled.div`
   font-weight: 800;
   text-align: center;
   padding: 16px;
-  margin-top:16px;
+  margin-top:32px;
 `;
 
 const PagerWrapper = styled.div`
@@ -66,3 +63,4 @@ const Pager = styled(Button)`
         }
     }
 `;
+

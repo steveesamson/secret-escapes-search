@@ -33,7 +33,7 @@ const Carousel: FC<CarouselProps> = ({ photos, title }): JSX.Element => {
         ))}
         <ImagePager>
             <ScrollButton type="button" onClick={onNext} title="Click to scroll images">
-                <ChevronRight size={14} />
+                <ChevronRight size={18} />
             </ScrollButton>
         </ImagePager>
     </ImageSpace>);
@@ -45,11 +45,15 @@ export default Carousel;
 
 const ImageSpace = styled.div`
   position:relative;
-  width: 550px;
-  padding: 0;
-  overflow: hidden;
+  width: 100%;
   display: flex;
   flex-wrap: nowrap;
+  padding: 0;
+  overflow: hidden;
+
+  @media screen and (min-width: 600px) {
+     width: 550px;
+  }
 `;
 
 const ImagePager = styled.div`
@@ -67,16 +71,26 @@ const ImagePager = styled.div`
 `;
 
 const StyledImage = styled(Image)`
-  width: 550px;
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
   transition: 1s cubic-bezier(0.39, 0.575, 0.565, 1);
+
+  @media screen and (min-width: 600px) {
+     width: 550px;
+  }
 `;
 
 const ScrollButton = styled(Button)`
     justify-content:center;
     align-items:center;
-    padding:8px 16px;
-    // border-radius:;
+    padding:24px;
     border-color: var(--slate-400);
     background-color:hsla(215, 20%, 65%, 40%);
     color:var(--slate-50);
+    &:hover{
+        border-color: var(--slate-400);
+        background-color:hsla(215, 20%, 65%, 40%);
+        color:var(--slate-50);
+    }
 `;

@@ -26,7 +26,7 @@ export default SearchList;
 const SearchItems = styled.ul`
   padding:0;
   margin:0;
-  list-type:none;
+  list-style:none;
 `;
 
 const ListWrapper = styled.section`
