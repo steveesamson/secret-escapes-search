@@ -24,4 +24,5 @@ export interface FullSale extends Sale {
 export type SearchResult = {
   resultCount: number;
   sales: Sale[];
+  query?: string;
 };

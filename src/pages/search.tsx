@@ -4,6 +4,7 @@ import { usePager, useQueryStringChages, useSearch } from "../hooks";
 import { PageError, PageLoader } from "../components/common";
 import { SearchList, SearchFooter } from "../components/search";
 import { SearchResult } from "../types";
+import { Helmet } from "react-helmet-async";
 
 const SearchResultList = (): JSX.Element => {
     const [page, nextPage] = useState<number>(0);
@@ -34,7 +35,10 @@ const SearchResultList = (): JSX.Element => {
 
     return (
         <>
-            <SearchList {...{ resultCount, sales }} />
+            <Helmet>
+                <title>Secret Escapes :: Search results for: {query}</title>
+            </Helmet>
+            <SearchList {...{ resultCount, sales, query }} />
             <SearchFooter {...{ page, resultCount, onNext, onPrev }} />
         </>
     );

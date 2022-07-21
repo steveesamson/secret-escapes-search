@@ -8,10 +8,11 @@ const client = new ApolloClient({
         fields: {
           saleSearch: {
             merge(existing = {}, incoming = {}) {
-              return {
-                resultCount: incoming.resultCount,
-                sales: [...(existing.sales || []), ...(incoming.sales || [])],
-              };
+              return incoming;
+              // return {
+              //   resultCount: incoming.resultCount,
+              //   sales: [...(existing.sales || []), ...(incoming.sales || [])],
+              // };
             },
           },
         },

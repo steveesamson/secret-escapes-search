@@ -5,10 +5,10 @@ import SearchItem from "./SearchItem";
 
 
 
-const SearchList: FC<SearchResult> = ({ sales, resultCount }): JSX.Element => {
+const SearchList: FC<SearchResult> = ({ sales, resultCount, query }): JSX.Element => {
     return (
         <ListWrapper>
-            <Header>Search results:</Header>
+            <Header>Search results for {query}:</Header>
             <SearchItems>
                 {sales.map((sale: Sale) => <SearchItem sale={sale} key={sale.id} />)}
             </SearchItems>

@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { Helmet } from "react-helmet-async";
 import styled from "styled-components";
 import { FullSale } from "../../types";
 import { Title, Text, Link } from "../common";
@@ -19,6 +20,9 @@ const SearchDetail: FC<SearchDetailProps> = ({
 
   return (
     <Detail>
+      <Helmet>
+        <title>Secret Escapes :: {title} details</title>
+      </Helmet>
       <Hero>
         <Carousel photos={photos} title={title} />
         <ContentSpace>
