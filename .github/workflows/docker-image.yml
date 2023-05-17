@@ -17,7 +17,7 @@ jobs:
       uses: mr-smithers-excellent/docker-build-push@v6
       with:
         image: steveesamson/images
-        tags: secret_escapes_seach_v1
+        tags: secret_escapes_seach_v1, latest
         registry: docker.io
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
